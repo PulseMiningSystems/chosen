@@ -63,7 +63,7 @@ class Chosen extends AbstractChosen
     else
       @search_container = @container.find('div.chzn-search').first()
       @selected_item = @container.find('.chzn-single').first()
-    
+
     this.results_build()
     this.set_tab_index()
     this.set_label_behavior()
@@ -149,6 +149,7 @@ class Chosen extends AbstractChosen
     this.search_field_scale()
 
   activate_field: ->
+    $("chzn-container-active").removeClass "chzn-container-active"
     @container.addClass "chzn-container-active"
     @active_field = true
 
@@ -298,7 +299,7 @@ class Chosen extends AbstractChosen
       close_link = $('<a />', { href: '#', class: 'search-choice-close',  rel: item.array_index })
       close_link.click (evt) => this.choice_destroy_link_click(evt)
       choice.append close_link
-    
+
     @search_container.before  choice
 
   choice_destroy_link_click: (evt) ->
@@ -569,7 +570,7 @@ class Chosen extends AbstractChosen
         w = @f_width - 10
 
       @search_field.css({'width': w + 'px'})
-  
+
   generate_random_id: ->
     string = "sel" + this.generate_random_char() + this.generate_random_char() + this.generate_random_char()
     while $("#" + string).length > 0
