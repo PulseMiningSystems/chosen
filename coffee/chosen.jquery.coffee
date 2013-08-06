@@ -156,6 +156,10 @@ class Chosen extends AbstractChosen
     @search_field.val(@search_field.val())
     @search_field.focus()
 
+    parent = @container.parent()
+    selectList = parent.children().first()
+    name = selectList.attr("name")
+    $("[data-control-id=#{name}]").tooltip "destroy"
 
   test_active_click: (evt) ->
     if $(evt.target).parents('#' + @container_id).length

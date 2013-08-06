@@ -273,6 +273,8 @@ Copyright (c) 2011 by Harvest
             return this.result_select(evt);
           }
           break;
+        case 45:
+          return evt.preventDefault();
         case 27:
           if (this.results_showing) {
             this.results_hide();
@@ -559,11 +561,16 @@ Copyright (c) 2011 by Harvest
     };
 
     Chosen.prototype.activate_field = function() {
+      var name, parent, selectList;
       $("chzn-container-active").removeClass("chzn-container-active");
       this.container.addClass("chzn-container-active");
       this.active_field = true;
       this.search_field.val(this.search_field.val());
-      return this.search_field.focus();
+      this.search_field.focus();
+      parent = this.container.parent();
+      selectList = parent.children().first();
+      name = selectList.attr("name");
+      return $("[data-control-id=" + name + "]").tooltip("destroy");
     };
 
     Chosen.prototype.test_active_click = function(evt) {

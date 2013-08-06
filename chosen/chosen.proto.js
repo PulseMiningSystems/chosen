@@ -273,6 +273,8 @@ Copyright (c) 2011 by Harvest
             return this.result_select(evt);
           }
           break;
+        case 45:
+          return evt.preventDefault();
         case 27:
           if (this.results_showing) {
             this.results_hide();
